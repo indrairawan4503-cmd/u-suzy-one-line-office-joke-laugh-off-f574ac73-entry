@@ -15,6 +15,10 @@ JOKE = "The CEO replied-all to all 400 employees begging them to stop replying-a
 
 
 def main():
+    # Entry gate self-check: joke must be non-blank, a single line,
+    # and 1-200 chars (the contest gate) before writing any output.
+    if not JOKE.strip() or "\n" in JOKE or not 1 <= len(JOKE) <= 200:
+        raise SystemExit("entry gate failed: joke must be non-blank, one line, 1-200 chars")
     text = JOKE + "\n"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
